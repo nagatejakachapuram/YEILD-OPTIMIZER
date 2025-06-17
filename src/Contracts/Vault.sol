@@ -75,6 +75,17 @@ contract Vault is ReentrancyGuard, Pausable {
         _;
     }
 
+    // --- Set Chainlink Admin ---
+    /**
+     * 
+     * @param _admin The address of the new Chainlink admin.
+     * @dev Only the current admin can call this.
+     * @notice This function allows the current admin to propose a new Chainlink admin.
+     */
+    function setChainlinkAdmin(address _admin) external onlyAdmin{
+        chainlink_Admin = _admin;
+    }
+
     // --- Admin Transfer Functions ---
     /**
      * @notice Proposes a new address to become the admin of the Vault.
